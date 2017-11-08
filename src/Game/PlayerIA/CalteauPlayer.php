@@ -41,7 +41,12 @@ class CalteauPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        $choice = parent::rockChoice();
+        if ($this->result->getChoicesFor($this->opponentSide) == parent::scissorsChoice())
+            $choice = parent::rockChoice();
+        else if ($this->result->getChoicesFor($this->opponentSide) == parent::rockChoice())
+            $choice = parent::paperChoice();
+        else
+            $choice = parent::rockChoice();
 
         return $choice;
     }
