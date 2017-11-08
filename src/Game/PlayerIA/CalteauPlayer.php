@@ -23,33 +23,33 @@ class CalteauPlayer extends Player
         $ennemyStats= $this->result->getStatsFor($this->opponentSide);
         $nbTurn = $this->result->getNbRound();
         $repetitivness = null; 
-        if ($nbTurn > 3)
+        if ($nbTurn > 2)
         {
            $lastMoves = array_values($this->result->getChoicesFor($this->opponentSide));
            $x = sizeof($lastMoves) - 1;
-           for ($i = 0; $i < 3; $i++)
+           for ($i = 0; $i < 2; $i++)
             {
                 $move = $lastMoves[$x - $i];
                 if ($move == parent::rockChoice())
-                  if ($i == 2)
+                  if ($i == 1)
                   $repetitivness = parent::rockChoice();
                 continue;
 
             }
-            for ($i = 0; $i < 3; $i++)
+            for ($i = 0; $i < 2; $i++)
             {
                 $move = $lastMoves[$x - $i];
                 if ($move == parent::paperChoice())
-                  if ($i == 2)
+                  if ($i == 1)
                   $repetitivness = parent::paperChoice();
                 continue;
 
             }
-            for ($i = 0; $i < 3; $i++)
+            for ($i = 0; $i < 2; $i++)
             {
                 $move = $lastMoves[$x - $i];
                 if ($move == parent::scissorsChoice())
-                  if ($i == 2)
+                  if ($i == 1)
                   $repetitivness = parent::scissorsChoice();
                 continue;
 
