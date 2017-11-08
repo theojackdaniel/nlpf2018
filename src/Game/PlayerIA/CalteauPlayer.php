@@ -43,7 +43,7 @@ class CalteauPlayer extends Player
 
         //Checking abusive style
         
-        $ennemyStats= $this->result->getStatsFor($this->mySide);
+        $ennemyStats= $this->result->getStatsFor($this->opponentSide);
         if (5 * $ennemyStats['rock'] < $ennemyStats['scissors'] ||
              5 * $ennemyStats['paper'] < $ennemyStats['scissors'])
              $choice = parent::rockChoice();
