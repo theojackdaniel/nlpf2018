@@ -26,11 +26,11 @@ class CalteauPlayer extends Player
             $choice = parent::rockChoice();
        
 
-        else if ($ennemyStats['rock'] / $nbTurn > 0.33)
+        else if ($ennemyStats['rock'] / $nbTurn > 0.5)
             $choice = parent::paperChoice();
-        else if ($ennemyStats['paper'] / $nbTurn > 0.33)
+        else if ($ennemyStats['paper'] / $nbTurn > 0.5)
             $choice = parent::scissorsChoice();
-        else if ($ennemyStats['scissors'] / $nbTurn > 0.33)
+        else if ($ennemyStats['scissors'] / $nbTurn > 0.5)
             $choice = parent::rockChoice();
         else if ($ennemyStats['rock'] < $ennemyStats['scissors'] &&
            $ennemyStats['paper'] < $ennemyStats['scissors'])
