@@ -22,9 +22,50 @@ class CalteauPlayer extends Player
         
         $ennemyStats= $this->result->getStatsFor($this->opponentSide);
         $nbTurn = $this->result->getNbRound();
-        if ($nbTurn == 0)
-            $choice = parent::rockChoice();
-       
+        $repetitivness = null; 
+        if ($nbTurn > 5)
+        {
+           $lastMoves = array_values($this->result->getChoicesFor($this->opponentSide));
+           $x = sizeof($lastMoves) - 1;
+           for ($i = 0; $i < 5; $i++)
+            {
+                $move = $lastMoves[$x - $i];
+                if ($move == parent::rockChoice())
+                  if ($i == 4)
+                  $repetitivness = parent::rockChoice();
+                continue;
+
+            }
+            for ($i = 0; $i < 5; $i++)
+            {
+                $move = $lastMoves[$x - $i];
+                if ($move == parent::paperChoice())
+                  if ($i == 4)
+                  $repetitivness = parent::paperChoice();
+                continue;
+
+            }
+            for ($i = 0; $i < 5; $i++)
+            {
+                $move = $lastMoves[$x - $i];
+                if ($move == parent::scissorsChoice())
+                  if ($i == 4)
+                  $repetitivness = parent::scissorsChoice();
+                continue;
+
+            }
+            if ($repetitivness == parent::rockChoice())
+                $choice = parent::paperChoice();
+                if ($repetitivness == parent::paperChoice())
+                $choice = parent::scissorsChoice();
+                if ($repetitivness == parent::scissorsChoice())
+                $choice = parent::rockChoice();
+        }
+        if ($repetitivness != null)
+            return $choice;
+
+        else if ($nbTurn == 0)
+        $choice = parent::rockChoice();
 
         else if ($ennemyStats['rock'] / $nbTurn > 0.5)
             $choice = parent::paperChoice();
