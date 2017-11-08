@@ -21,7 +21,22 @@ class CalteauPlayer extends Player
         // Finding Abusive style
         
         $ennemyStats= $this->result->getStatsFor($this->opponentSide);
-        /*
+        $nbTurn = $this->result->getNbRound();
+        if ($nbTurn == 0)
+            $choice = parent::rockChoice();
+       
+
+        else if ($ennemyStats['rock'] / $nbTurn > 0.33)
+            $choice = parent::paperChoice();
+        else if ($ennemyStats['paper'] / $nbTurn > 0.33)
+            $choice = parent::scissorsChoice();
+        else if ($ennemyStats['scissors'] / $nbTurn > 0.33)
+            $choice = parent::rockChoice();
+        else 
+           $choice = parent::rockChoice();
+   
+   return $choice;
+         /*
         if (10 * $ennemyStats['rock'] < $ennemyStats['scissors'] &&
              10 * $ennemyStats['paper'] < $ennemyStats['scissors'])
              $choice = parent::rockChoice();
@@ -39,16 +54,6 @@ class CalteauPlayer extends Player
         $choice = parent::rockChoice();
         else if ( $this->result->getLastChoiceFor($this->mySide) == parent::scissorsChoice())
         $choice = parent::paperChoice();*/
-
-        if ($ennemyStats['rock'] < $ennemyStats['scissors'] &&
-          $ennemyStats['paper'] < $ennemyStats['scissors'])
-        $choice = parent::rockChoice();
-   else if ($ennemyStats['scissors'] < $ennemyStats['rock'] &&
-   $ennemyStats['paper'] < $ennemyStats['rock'])
-   $choice = parent::paperChoice();
-   else
-   $choice = parent::scissorsChoice();
-        
         //If no abusive style, will take his last move and counter
 
         /*else if ($this->result->getLastChoiceFor($this->opponentSide) == parent::scissorsChoice())
@@ -58,7 +63,7 @@ class CalteauPlayer extends Player
         else
             $choice = parent::rockChoice();
 */
-        return $choice;
+       
     }
 };
 
