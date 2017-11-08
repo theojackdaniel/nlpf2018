@@ -20,7 +20,7 @@ class CalteauPlayer extends Player
         
         // Finding Abusive style
         
-        $ennemyStats= $this->result->getStatsFor($this->opponentSide);
+        /*$ennemyStats= $this->result->getStatsFor($this->opponentSide);
         
         if (10 * $ennemyStats['rock'] < $ennemyStats['scissors'] &&
              10 * $ennemyStats['paper'] < $ennemyStats['scissors'])
@@ -38,9 +38,16 @@ class CalteauPlayer extends Player
         else if ( $this->result->getLastChoiceFor($this->mySide) == parent::paperChoice())
         $choice = parent::rockChoice();
         else if ( $this->result->getLastChoiceFor($this->mySide) == parent::scissorsChoice())
-        $choice = parent::paperChoice();
+        $choice = parent::paperChoice();*/
 
-
+        if ($ennemyStats['rock'] < $ennemyStats['scissors'] &&
+          $ennemyStats['paper'] < $ennemyStats['scissors'])
+        $choice = parent::rockChoice();
+   else if ($ennemyStats['scissors'] < $ennemyStats['rock'] &&
+   $ennemyStats['paper'] < $ennemyStats['rock'])
+   $choice = parent::paperChoice();
+   else
+   $choice = parent::scissorsChoice();
         
         //If no abusive style, will take his last move and counter
 
