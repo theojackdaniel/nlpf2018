@@ -41,6 +41,8 @@ class CalteauPlayer extends Player
       else if ($ennemyStats['rock'] < $ennemyStats['paper'] &&
       $ennemyStats['scissors'] < $ennemyStats['paper'])
       $choice = parent::scissorsChoice();
+      else
+          $choice = parent::rockChoice();
    
    return $choice;
          /*
